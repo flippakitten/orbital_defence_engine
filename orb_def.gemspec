@@ -1,24 +1,22 @@
 $:.push File.expand_path("lib", __dir__)
 
-# Maintain your gem's version:
 require "orb_def/version"
 
-# Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
   spec.name        = "orb_def"
   spec.version     = OrbDef::VERSION
   spec.authors     = ["James Gascoigne-Taylor"]
   spec.email       = ["james@flippakitten.com"]
   spec.homepage    = "https://github.com/flippakitten/orbital_defence_engine"
-  spec.summary     = "Fire and weather data you can query by geolocation"
-  spec.description = "Uses Nasa FIRMS data and OpenWeatherApi data"
+  spec.summary     = "Query Nasa FIRMS data and Open Weather API data by geolocation"
+  spec.description = "Fetches and persists Nasa FIRMS (Fires) and Open Weather API data by geolocation"
   spec.license     = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  spec.test_files = Dir["spec/**/*"]
+  spec.test_files    = Dir["spec/**/*"]
 
   spec.add_dependency 'rails', '~> 5.2.4', '>= 5.2.4.2'
   spec.add_dependency 'pagy', '~> 3.7', '>= 3.7.5'
