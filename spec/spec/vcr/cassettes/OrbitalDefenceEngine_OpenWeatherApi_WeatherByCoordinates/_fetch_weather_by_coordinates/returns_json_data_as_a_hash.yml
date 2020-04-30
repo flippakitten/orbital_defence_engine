@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.openweathermap.org/data/2.5/weather?appid=<OPEN_WEATHER_API_KEY>&lat=1&lon=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - openresty
+      date:
+      - Tue, 28 Apr 2020 07:08:00 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '440'
+      connection:
+      - close
+      x-cache-key:
+      - "/data/2.5/weather?lat=1&lon=1"
+      access-control-allow-origin:
+      - "*"
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-methods:
+      - GET, POST
+    body:
+      encoding: UTF-8
+      string: '{"coord":{"lon":1,"lat":1},"weather":[{"id":500,"main":"Rain","description":"light
+        rain","icon":"10d"}],"base":"stations","main":{"temp":301.6,"feels_like":305.52,"temp_min":301.6,"temp_max":301.6,"pressure":1013,"humidity":71,"sea_level":1013,"grnd_level":1013},"wind":{"speed":1.63,"deg":254},"rain":{"1h":0.81},"clouds":{"all":100},"dt":1588057680,"sys":{"sunrise":1588052932,"sunset":1588096666},"timezone":0,"id":0,"name":"","cod":200}'
+    http_version: null
+  recorded_at: Tue, 28 Apr 2020 07:08:00 GMT
+recorded_with: VCR 5.1.0

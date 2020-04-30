@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://nrt4.modaps.eosdis.nasa.gov/api/v2/content/archives/FIRMS/c6/Global/MODIS_C6_Global_MCD14DL_NRT_2020022.txt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer <NASA_API_KEY>
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      server:
+      - openresty
+      date:
+      - Tue, 28 Apr 2020 07:07:59 GMT
+      content-type:
+      - text/html;charset=UTF-8
+      content-length:
+      - '9'
+      connection:
+      - close
+      x-frame-options:
+      - SAMEORIGIN
+      access-control-allow-credentials:
+      - 'true'
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: Not Found
+    http_version: null
+  recorded_at: Wed, 22 Jan 2020 07:56:44 GMT
+- request:
+    method: get
+    uri: https://nrt4.modaps.eosdis.nasa.gov/api/v2/content/archives/FIRMS/viirs/Global/VIIRS_I_Global_VNP14IMGTDL_NRT_2020022.txt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer <NASA_API_KEY>
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      server:
+      - openresty
+      date:
+      - Tue, 28 Apr 2020 07:08:00 GMT
+      content-type:
+      - text/html;charset=UTF-8
+      content-length:
+      - '9'
+      connection:
+      - close
+      access-control-allow-credentials:
+      - 'true'
+      x-frame-options:
+      - SAMEORIGIN
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: Not Found
+    http_version: null
+  recorded_at: Wed, 22 Jan 2020 07:56:44 GMT
+recorded_with: VCR 5.1.0
