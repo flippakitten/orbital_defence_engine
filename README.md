@@ -1,10 +1,14 @@
 [![CircleCI](https://circleci.com/gh/flippakitten/orbital_defence_engine/tree/master.svg?style=svg)](https://circleci.com/gh/flippakitten/orbital_defence_engine/tree/master)
-# OrbitalDefenceEngine
-Busy extracting out the logic from [Orbital Defence Demo](https://github.com/flippakitten/orbital_defence_demo)
-Will probably rename this to something shorter and does not contain the word Engine (unless I name it FireEngine)
+# Orbital Defence Engine
+Making [NASA FIRMS](https://nrt4.modaps.eosdis.nasa.gov/) data queryable by geo-location and augmenting it with [Open Weather API](https://openweathermap.org) data
 
-## Usage
-Coming soon!
+[Orbital Defence Demo](https://github.com/flippakitten/orbital_defence_demo)
+
+## Getting Started
+Grab a OpenWeatherMap API key [here](https://openweathermap.org/appid)  
+Grab a Nasa EarthData Api Key [here](https://nrt4.modaps.eosdis.nasa.gov/help/downloads#appkeys)
+The Engine has a dependancy on [pagy](https://github.com/ddnexus/pagy) for pagination 
+and [geokit-rails](https://github.com/geokit/geokit-rails) for geo based queries.
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -18,13 +22,24 @@ And then execute:
 $ bundle
 ```
 
-Or install it yourself as:
+Generate the installation files:
+This will create the orb_def, pagy and geokit initializers, install migrations and mount the app to '/' 
 ```bash
-$ gem install orb_def
+$ rails generate orb_def:install
+```
+
+Run migrations:
+```bash
+$ rails db:migrate
+```
+
+Populate the DB with required seed information:
+```bash
+$ rails orb_def:seed_db
 ```
 
 ## Contributing
-Contribution directions go here.
+Fell free to contribute by opening cloning the repo and opening a PR.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
