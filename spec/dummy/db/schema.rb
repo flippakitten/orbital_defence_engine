@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_04_28_063630) do
 
   create_table "orb_def_fires", force: :cascade do |t|
     t.bigint "weather_station_id"
-    t.bigint "detected_at_weather_reading_id"
+    t.bigint "weather_reading_id"
     t.bigint "detection_type_id"
     t.float "latitude"
     t.float "longitude"
@@ -42,16 +42,17 @@ ActiveRecord::Schema.define(version: 2020_04_28_063630) do
     t.string "confidence"
     t.string "version"
     t.string "day_night"
+    t.bigint "detected_at_weather_reading_id"
     t.datetime "detected_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["detected_at"], name: "index_orb_def_fires_on_detected_at"
-    t.index ["detected_at_weather_reading_id"], name: "index_orb_def_fires_on_detected_at_weather_reading_id"
     t.index ["detection_type_id"], name: "index_orb_def_fires_on_detection_type_id"
     t.index ["identifier"], name: "index_orb_def_fires_on_identifier"
     t.index ["lat_long"], name: "index_orb_def_fires_on_lat_long"
     t.index ["latitude"], name: "index_orb_def_fires_on_latitude"
     t.index ["longitude"], name: "index_orb_def_fires_on_longitude"
+    t.index ["weather_reading_id"], name: "index_orb_def_fires_on_weather_reading_id"
     t.index ["weather_station_id"], name: "index_orb_def_fires_on_weather_station_id"
   end
 

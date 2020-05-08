@@ -2,7 +2,7 @@ class CreateOrbDefFires < ActiveRecord::Migration[5.2]
   def change
     create_table :orb_def_fires do |t|
       t.belongs_to :weather_station, index: true
-      t.belongs_to :detected_at_weather_reading, limit: 8, index: true
+      t.belongs_to :weather_reading, index: true
       t.belongs_to :detection_type
       t.float :latitude, precision: 10, scale: 6, index: true
       t.float :longitude, precision: 10, scale: 6, index: true
@@ -21,6 +21,7 @@ class CreateOrbDefFires < ActiveRecord::Migration[5.2]
       t.string  :confidence
       t.string  :version
       t.string  :day_night
+      t.bigint :detected_at_weather_reading_id
       t.timestamp :detected_at, index: true, uniqueness: false
       t.timestamps
     end

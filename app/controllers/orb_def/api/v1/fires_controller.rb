@@ -10,7 +10,9 @@ module OrbDef
     end
 
     def search
-      render json: fires_in_bounds, status: :ok, each_serializer: Api::V1::FireSerializer
+      @pagy, @records = pagy(Fire.in_last_24_hours.in_bounds([sw_bound_point, ne_bound_point]), items: 100)
+
+      render json: @records, status: :ok, each_serializer: Api::V1::FireSerializer
     end
 
     def fires_current_wind_direction_indicator
@@ -29,13 +31,6 @@ module OrbDef
 
     private
 
-    def fire_params
-      params.permit(:sw_bound_point, :ne_bound_point)
-    end
-
-    def fires_in_bounds
-      @fires_in_bounds ||= Fire.in_last_24_hours.in_bounds([sw_bound_point, ne_bound_point])
-    end
     def sw_bound_point
       @sw_bound_point ||= Geokit::LatLng.new(get_lat(sw_lat_lng), get_lng(sw_lat_lng))
     end

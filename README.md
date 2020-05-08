@@ -40,6 +40,22 @@ Populate the DB with required seed information:
 $ rails orb_def:seed_db
 ```
 
+Import all fires with their weather readings:
+```ruby
+OrbDef::FirmsImport.all
+```
+
+You can then hit the api/v1/search endpoint:
+```bash
+http://localhost:3000/api/v1/fires/search?sw_bound_point=22,22&ne_bound_point=22.325,23.345345&page=1
+```
+
+or you can call the fire model directly:
+```ruby
+OrbDef::Fire.in_last_24_hours.in_bounds([sw_bound_point, ne_bound_point])
+OrbDef::Fire.in_last_24_hours.within(10, origin: [latitude, longitude])
+OrbDef::Fire.within(10, origin: [latitude, longitude])
+```
 ## Contributing
 Fell free to contribute by opening cloning the repo and opening a PR.
 
