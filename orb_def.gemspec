@@ -18,10 +18,10 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.test_files    = Dir["spec/**/*"]
 
-  spec.add_dependency 'rails', '~> 5.2.4', '>= 5.2.4.2'
+  spec.add_dependency 'rails', '>= 5.2'
   spec.add_dependency 'pagy', '~> 3.7', '>= 3.7.5'
   spec.add_dependency 'geokit-rails', '~> 2.3', '>= 2.3.1'
-  spec.add_dependency 'faraday', '~> 0.15.3'
+  spec.add_dependency 'faraday'
   spec.add_dependency 'active_model_serializers'
 
   spec.add_development_dependency 'pg'
