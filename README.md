@@ -21,28 +21,29 @@ gem 'orb_def'
 
 And then execute:
 ```bash
-$ bundle
+bundle
 ```
 
 Generate the installation files:
 This will create the orb_def, pagy and geokit initializers, install migrations and mount the app to '/' 
 ```bash
-$ rails generate orb_def:install
+rails generate orb_def:install
 ```
 
 Run migrations:
 ```bash
-$ rails db:migrate
+rails db:migrate
 ```
 
 Populate the DB with required seed information:
 ```bash
-$ rails orb_def:seed_db
+rails orb_def:seed_db
 ```
 
-Import all fires with their weather readings:
+Import all fires with their weather readings 
+in a rails console:
 ```ruby
-OrbDef::FirmsImport.all
+OrbDef::Nasa::FirmsImport.all
 ```
 
 You can then hit the api/v1/search endpoint:
@@ -57,7 +58,7 @@ OrbDef::Fire.in_last_24_hours.within(10, origin: [latitude, longitude])
 OrbDef::Fire.within(10, origin: [latitude, longitude])
 ```
 ## Contributing
-Fell free to contribute by opening cloning the repo and opening a PR.
+Fell free to contribute by forking the repo and opening a PR.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
