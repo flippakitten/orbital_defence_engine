@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 module OrbDef
-  class FireWeatherData
-    attr_reader :fire
+  class WeatherData
+    attr_reader :latitude, :longitude
 
-    def initialize(fire)
-      @fire = fire
+    def initialize(latitude, longitude)
+      @latitude = latitude
+      @longitude = longitude
     end
 
     def find_or_create_weather
-      weather_station = WeatherStation.within(10, origin: [fire.latitude, fire.longitude]).first
+      weather_station = WeatherStation.within(10, origin: [latitude, longitude]).first
 
       if weather_station.present? && weather_reading_within_limits?(weather_station)
         return weather_station, weather_station.weather_readings.last
@@ -19,7 +20,7 @@ module OrbDef
     end
 
     def create_station_and_reading
-      reading_json = OpenWeatherApi::WeatherByCoordinates.fetch(latitude: fire.latitude, longitude: fire.longitude)
+      reading_json = OpenWeatherApi::WeatherByCoordinates.fetch(latitude: latitude, longitude: longitude)
 
       return unless reading_json
 
@@ -30,7 +31,7 @@ module OrbDef
     end
 
     def weather_reading_within_limits?(weather_station)
-      weather_station.weather_readings&.last.reading_at.between?(fire.detected_at - 30.minutes, fire.detected_at + 30.minutes)
+      weather_station.weather_readings&.last.reading_at.between?(Time.now - 20.minutes, Time.now)
     end
   end
 end

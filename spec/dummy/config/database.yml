@@ -1,19 +1,18 @@
 default: &default
   adapter: postgresql
-  user: root
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  host: localhost
+  host: ''
   database: orb_def_development
 
 test:
   <<: *default
-  database: orb_def_test
+  database: orb_def_engine_test
   #  user: <%#= ENV['DB_USER'] %>
   #  password: <%#= ENV['DB_PASSWORD'] %>
-  host: <%= ENV['DB_HOST'] || 'localhost' %>
+  host: <%= ENV['DB_HOST'] || '' %>
   password: <%= ENV['DB_PASSWORD'] %>
 
 production:

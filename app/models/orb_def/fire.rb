@@ -46,7 +46,7 @@ module OrbDef
           detection_type_id: OrbDef::DetectionType.find_by_name('Satellite').id
           )
 
-        station, reading = OrbDef::FireWeatherData.new(fire).find_or_create_weather
+        station, reading = OrbDef::WeatherData.new(fire.latitude, fire.longitude).find_or_create_weather
 
         fire.update_attributes(detected_at_weather_reading_id: reading.id, weather_station_id: station.id)
         fire.save!
