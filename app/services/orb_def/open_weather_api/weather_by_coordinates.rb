@@ -7,7 +7,7 @@ module OrbDef
       class << self
         def fetch(latitude:, longitude:)
           response = open_weather_client.get do |req|
-            req.url "/data/2.5/weather?lat=#{latitude}&lon=#{longitude}&appid=#{open_weather_key}"
+            req.url "/data/2.5/weather?appid=#{open_weather_key}&lat=#{latitude}&lon=#{longitude}"
           end
 
           sleep API_THROTTLE_TIME
@@ -28,4 +28,3 @@ module OrbDef
     end
   end
 end
-

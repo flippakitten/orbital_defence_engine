@@ -6,12 +6,13 @@ RSpec.describe OrbDef::Nasa::FirmsImport, type: :service do
 
   describe ".all" do
     context 'when request successful' do
-      let(:vcr_time) { "2020-01-22 07:56:44 +0000".to_time }
+      let(:vcr_time) { '2020-06-11 07:51:35 +0100'.to_time }
 
       it 'creates fires', :vcr do
         create(:detection_type)
+
         Timecop.freeze(vcr_time) do
-          expect{ OrbDef::Nasa::FirmsImport.all }.to change{ OrbDef::Fire.count }.by(3)
+          expect{ OrbDef::Nasa::FirmsImport.all }.to change{ OrbDef::Fire.count }.by(7)
         end
       end
     end

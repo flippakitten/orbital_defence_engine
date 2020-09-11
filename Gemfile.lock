@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    orb_def (0.1.0)
+    orb_def (0.1.1)
       active_model_serializers
       faraday
       geokit-rails (~> 2.3, >= 2.3.1)

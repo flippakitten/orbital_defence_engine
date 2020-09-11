@@ -9,7 +9,7 @@ RSpec.describe OrbDef::Api::V1::WeatherReadingsController, type: :controller do
 
   describe 'GET show/:id' do
     let(:weather_station) { create(:weather_station) }
-    let(:weather_reading) { create(:weather_reading, weather_station: weather_station) }
+    let!(:weather_reading) { create(:weather_reading, weather_station_id: weather_station.id) }
     let(:expected_response) do
       {
           id: weather_reading.id.to_s,
@@ -29,14 +29,14 @@ RSpec.describe OrbDef::Api::V1::WeatherReadingsController, type: :controller do
     end
 
     it 'returns serialized temperature' do
-      get :show, params: { id: weather_reading.id }
+      get :show, params: { id: weather_station.id }
       json = JSON.parse(response.body)
 
       expect(json['temperature']).to eq('-247.84')
     end
 
     it 'returns serialized response' do
-      get :show, params: { id: weather_reading.id }
+      get :show, params: { id: weather_station.id }
       json = JSON.parse(response.body)
 
       expect(json.symbolize_keys).to eq(expected_response)
